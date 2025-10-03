@@ -25,14 +25,21 @@ AddItem(){
   });
 }
 
+RemoveItem(index){
+  setState(() {
+    UiDesignList.removeAt(index);
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          "UI Design"
+          "App Design",style: TextStyle(color: Colors.white),
         ),
+        centerTitle: true,
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -70,7 +77,9 @@ AddItem(){
                         children: [
                           Expanded(flex: 80, child: Text(UiDesignList[index]['item'].toString()),
                           ),
-                          Expanded(flex: 20, child: TextButton(onPressed: (){},
+                          Expanded(flex: 20, child: TextButton(onPressed: (){
+                            RemoveItem(index);
+                          },
                               child: Icon(Icons.delete),
                               ),
                           ),
